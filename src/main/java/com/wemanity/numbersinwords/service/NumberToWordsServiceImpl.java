@@ -8,10 +8,12 @@ import java.util.Map;
 @Service
 public class NumberToWordsServiceImpl implements NumberToWordsService {
 
+    public static final String EUROS =" Euros";
+
     @Override
     public String convertNumberToWords(int number) {
         if (number == 0) {
-            return "zero dollars";
+            return "zero euro";
         }
 
         StringBuilder words = new StringBuilder();
@@ -26,7 +28,7 @@ public class NumberToWordsServiceImpl implements NumberToWordsService {
             index++;
         }
 
-        return words.toString().trim() + " dollars";
+        return words.toString().trim() + EUROS;
     }
 
     @Override
@@ -43,9 +45,16 @@ public class NumberToWordsServiceImpl implements NumberToWordsService {
             if (wordToNumberMap.containsKey(word)) {
                 int value = wordToNumberMap.get(word);
                 if (value == 100) {
+                    if (current == 0) {
+                        current = 1;
+                    }
                     current *= value;
                 } else if (value >= 1000) {
-                    result += current * value;
+                    if (current == 0) {
+                        current = 1;
+                    }
+                    current *= value;
+                    result += current;
                     current = 0;
                 } else {
                     current += value;
