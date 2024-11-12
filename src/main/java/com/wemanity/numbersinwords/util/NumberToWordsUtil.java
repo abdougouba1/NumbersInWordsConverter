@@ -20,24 +20,28 @@ public class NumberToWordsUtil {
     };
 
     public static String convertLessThanThousand(int number) {
-        String result;
+        String result = "";
 
-        if (number % 100 < 20) {
+        if (number % 100 < 20 && number % 100 > 0) {
             result = UNITS[number % 100];
             number /= 100;
         } else {
-            result = UNITS[number % 10];
+            if (number % 10 > 0) {
+                result = UNITS[number % 10];
+            }
             number /= 10;
 
-            result = TENS[number % 10] + " " + result;
+            if (number % 10 > 0) {
+                result = TENS[number % 10] + (result.isEmpty() ? "" : " " + result);
+            }
             number /= 10;
         }
 
-        if (number == 0) {
-            return result;
+        if (number > 0) {
+            result = UNITS[number] + " hundred" + (result.isEmpty() ? "" : " " + result);
         }
 
-        return UNITS[number] + " hundred" + " " + result;
+        return result.trim();
     }
 
     public static Map<String, Integer> buildWordToNumberMap() {
