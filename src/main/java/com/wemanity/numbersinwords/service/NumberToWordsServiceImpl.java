@@ -3,6 +3,8 @@ package com.wemanity.numbersinwords.service;
 import com.wemanity.numbersinwords.util.NumberToWordsUtil;
 import org.springframework.stereotype.Service;
 
+import java.util.Map;
+
 @Service
 public class NumberToWordsServiceImpl implements NumberToWordsService {
 
@@ -29,6 +31,27 @@ public class NumberToWordsServiceImpl implements NumberToWordsService {
 
     @Override
     public int convertWordsToNumber(String words) {
-        return 0;
+        if (words == null || words.isEmpty()) {
+            return 0;
+        }
+
+        Map<String, Integer> wordToNumberMap = NumberToWordsUtil.buildWordToNumberMap();
+        int result = 0;
+        int current = 0;
+
+        for (String word : words.toLowerCase().split(" ")) {
+            if (wordToNumberMap.containsKey(word)) {
+                int value = wordToNumberMap.get(word);
+                if (value == 100) {
+                    current *= value;
+                } else if (value >= 1000) {
+                    result += current * value;
+                    current = 0;
+                } else {
+                    current += value;
+                }
+            }
+        }
+        return result + current;
     }
 }
