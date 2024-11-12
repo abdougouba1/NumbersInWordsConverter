@@ -41,7 +41,22 @@ public class NumberToWordsServiceImpl implements NumberToWordsService {
 
     @Override
     public String convertNumberToWords(int number) {
-        return "";
+        if (number == 0) {
+            return "zero dollars";
+        }
+
+        StringBuilder words = new StringBuilder();
+        int index = 0;
+
+        while (number > 0) {
+            if (number % 1000 != 0) {
+                words.insert(0, convertLessThanThousand(number % 1000) + THOUSANDS[index] + " ");
+            }
+            number /= 1000;
+            index++;
+        }
+
+        return words.toString().trim() + " dollars";
     }
 
     @Override
