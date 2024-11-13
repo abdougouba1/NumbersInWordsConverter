@@ -12,54 +12,54 @@ public class NumberToWordsServiceImplTest {
     @Test
     public void testConvertNumberToWords_SingleDigit() {
         String result = numberToWordsService.convertNumberToWords(7);
-        assertThat(result).isEqualTo("seven dollars");
+        assertThat(result).isEqualTo("seven Euros");
     }
 
     @Test
     public void testConvertNumberToWords_TwoDigit() {
         String result = numberToWordsService.convertNumberToWords(45);
-        assertThat(result).isEqualTo("forty five dollars");
+        assertThat(result).isEqualTo("forty five Euros");
     }
 
     @Test
     public void testConvertNumberToWords_ThreeDigit() {
         String result = numberToWordsService.convertNumberToWords(123);
-        assertThat(result).isEqualTo("one hundred twenty three dollars");
+        assertThat(result).isEqualTo("one hundred twenty three Euros");
     }
 
     @Test
     public void testConvertNumberToWords_Thousand() {
         String result = numberToWordsService.convertNumberToWords(1000);
-        assertThat(result).isEqualTo("one thousand dollars");
+        assertThat(result).isEqualTo("one thousand Euros");
     }
 
     @Test
     public void testConvertNumberToWords_LargeNumber() {
         String result = numberToWordsService.convertNumberToWords(1234567);
-        assertThat(result).isEqualTo("one million two hundred thirty four thousand five hundred sixty seven dollars");
+        assertThat(result).isEqualTo("one million two hundred thirty four thousand five hundred sixty seven Euros");
     }
 
     @Test
     public void testConvertWordsToNumber_SingleDigit() {
-        int result = numberToWordsService.convertWordsToNumber("seven dollars");
+        int result = numberToWordsService.convertWordsToNumber("seven Euros");
         assertThat(result).isEqualTo(7);
     }
 
     @Test
     public void testConvertWordsToNumber_TwoDigit() {
-        int result = numberToWordsService.convertWordsToNumber("forty five dollars");
+        int result = numberToWordsService.convertWordsToNumber("forty five Euros");
         assertThat(result).isEqualTo(45);
     }
 
     @Test
     public void testConvertWordsToNumber_ThreeDigit() {
-        int result = numberToWordsService.convertWordsToNumber("one hundred twenty three dollars");
+        int result = numberToWordsService.convertWordsToNumber("one hundred twenty three Euros");
         assertThat(result).isEqualTo(123);
     }
 
     @Test
     public void testConvertWordsToNumber_Thousand() {
-        int result = numberToWordsService.convertWordsToNumber("one thousand dollars");
+        int result = numberToWordsService.convertWordsToNumber("one thousand Euros");
         assertThat(result).isEqualTo(1000);
     }
 
