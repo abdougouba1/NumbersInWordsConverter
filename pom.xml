@@ -13,6 +13,15 @@
         <maven.compiler.target>17</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
+
+    <description>
+        Ce projet est un exercice de conversion de nombres en mots et de mots en nombres. Les étapes sont les suivantes :
+        - Étape 1 : Créer une fonction pour convertir les nombres en mots.
+        - Étape 2 : Créer une fonction pour convertir les mots en nombres.
+        - Étape 3 : Développer de manière test-driven pour garantir la précision.
+        Objectif : Écrire les montants financiers en chiffres et en mots pour réduire les erreurs.
+    </description>
+
     <dependencies>
         <dependency>
             <groupId>com.amazonaws</groupId>
